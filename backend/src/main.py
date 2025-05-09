@@ -1,27 +1,9 @@
-"""Main FastAPI application for MongoDB-backed chat service."""
-
-import os
-
-from dotenv import load_dotenv
 from fastapi import FastAPI
-from motor.motor_asyncio import AsyncIOMotorClient
+from src.routes import root, ping
+from src.lifespan import lifespan
 
-load_dotenv()
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
-print("Starting the server...")
-@app.get("/")
-def read_root():
-    return {"message": "Hello World"}
-
-
-MONGO_URI = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_URI)
-db = client["chatapp"]
-
-
-@app.get("/ping")
-async def ping():
-    result = await db.command("ping")
-    print("MongoDB Ping Response:", result)  # Verify response
-    return result
+# Include routes
+app.include_router(root.router)
+app.include_router(ping.router)
