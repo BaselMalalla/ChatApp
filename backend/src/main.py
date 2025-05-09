@@ -9,7 +9,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 load_dotenv()
 app = FastAPI()
 
-
+print("Starting the server...")
 @app.get("/")
 def read_root():
     return {"message": "Hello World"}
@@ -22,4 +22,6 @@ db = client["chatapp"]
 
 @app.get("/ping")
 async def ping():
-    return await db.command("ping")
+    result = await db.command("ping")
+    print("MongoDB Ping Response:", result)  # Verify response
+    return result

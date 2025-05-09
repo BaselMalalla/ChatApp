@@ -3,12 +3,7 @@ name = "nullframe-backend"
 version = "0.1.0"
 description = "FastAPI backend for Nullframe"
 authors = [{ name = "Basel Malalla", email = "malalla.basel@gmail.com" }]
-dependencies = [
-    "fastapi",
-    "uvicorn[standard]",
-    "motor",
-    "python-dotenv"
-]
+dependencies = ["fastapi", "uvicorn[standard]", "motor", "python-dotenv"]
 requires-python = ">=3.12"
 
 [project.optional-dependencies]
@@ -19,12 +14,8 @@ line-length = 88
 target-version = "py311"
 exclude = ["migrations", ".venv"]
 
-lint.select = ["ALL"]
-lint.ignore = [
-  "D203",
-  "D213",
-  "ANN101"
-]
+select = ["ALL"]
+ignore = ["D203", "D213", "ANN001"]
 
 [tool.ruff.format]
 quote-style = "double"
