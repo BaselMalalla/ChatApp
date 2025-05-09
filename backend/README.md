@@ -45,3 +45,9 @@ pip install .[dev]
 * Add `.venv` to `.gitignore`.
 * Always activate the virtual environment before working.
 * Use `deactivate` to exit when done.
+
+## Run Command
+
+```bash
+uvicorn src.main:app --reload
+```
