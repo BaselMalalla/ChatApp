@@ -1,4 +1,4 @@
-#### 🚀 How To Run?
+# 🚀 How To Run?
 
 1. **Install dependencies** (from the project root):
 
@@ -30,7 +30,7 @@
 
 ---
 
-#### 📁 Basic Structure Overview
+## 📁 Basic Structure Overview
 
 frontend/
 └── client-chat/
@@ -60,4 +60,3 @@ frontend/
     │   └── vite-env.d.ts           # Vite TypeScript env declarations
     ├── .gitignore
     └── eslint.config.js
-
