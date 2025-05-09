@@ -9,12 +9,12 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, label, className = "", required
                     id={id}
                     aria-describedby={id}
                     type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                    className="w-4 h-4 border border-secondary-300 rounded bg-secondary-50 focus:ring-3 focus:ring-primary-300 dark:bg-secondary-700 dark:border-secondary-600 dark:focus:ring-primary-600 dark:ring-offset-secondary-800"
                     required={required}  // Use the required prop
                 />
             </div>
             <div className="ml-3 text-sm">
-                <label htmlFor={id} className="text-gray-500 dark:text-gray-300">
+                <label htmlFor={id} className="text-secondary-500 dark:text-secondary-300">
                     {label}
                 </label>
             </div>

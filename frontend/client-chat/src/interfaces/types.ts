@@ -26,3 +26,7 @@ export interface SubmitButtonProps {
   text: string;
   className?: string;
 }
+
+export interface LogoProps {
+  className?: string;
+}

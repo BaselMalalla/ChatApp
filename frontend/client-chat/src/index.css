@@ -1,64 +1,10 @@
 @import "tailwindcss";
 
-
-/* app/globals.css */
-
-/* Root theme variables (Light Mode Default) */
-:root {
-    --primary: oklch(0.5 0.18 63);
-    /* Purple (Light) */
-    --primary-light: oklch(0.6 0.15 75);
-    /* Lighter purple */
-    --primary-dark: oklch(0.3 0.25 40);
-    /* Darker purple */
-    --secondary: oklch(0.7 0.18 70);
-    /* Light purple */
-    --secondary-dark: oklch(0.4 0.22 35);
-    /* Darker secondary */
-    --accent: oklch(0.75 0.25 55);
-    /* Accent purple */
-    --accent-light: oklch(0.85 0.2 70);
-    /* Lighter accent */
-    --background-color: oklch(0.98 0.02 95);
-    /* Light background */
-    --background-dark: oklch(0.1 0.03 15);
-    /* Dark background */
-    --text-color: oklch(0.08 0.04 40);
-    /* Dark text */
-    --text-light: oklch(0.9 0.05 90);
-    /* Light text */
-    --text-muted: oklch(0.15 0.05 50);
-    /* Muted text */
-    --border-color: oklch(0.5 0.1 60);
-    /* Border color */
+@theme{
+/* You can customize it if needed */
 }
 
-/* Dark Mode variables */
-.dark {
-    --primary: oklch(0.3 0.25 40);
-    /* Dark Purple */
-    --primary-light: oklch(0.4 0.2 55);
-    /* Light purple */
-    --primary-dark: oklch(0.1 0.3 20);
-    /* Darker purple */
-    --secondary: oklch(0.6 0.18 65);
-    /* Light purple */
-    --secondary-dark: oklch(0.35 0.2 30);
-    /* Darker secondary */
-    --accent: oklch(0.65 0.3 50);
-    /* Accent purple */
-    --accent-light: oklch(0.75 0.2 65);
-    /* Lighter accent */
-    --background-color: oklch(0.05 0.03 10);
-    /* Dark background */
-    --background-dark: oklch(0.07 0.03 8);
-    /* Very dark background */
-    --text-color: oklch(0.95 0.05 85);
-    /* Light text */
-    --text-light: oklch(0.85 0.03 90);
-    /* Light text */
-    --text-muted: oklch(0.15 0.05 55);
-    /* Muted text */
-    --border-color: oklch(0.4 0.1 45);
-    /* Border color */
+html{
+    scroll-behavior: smooth;
+    background-color: #111827;
 }
