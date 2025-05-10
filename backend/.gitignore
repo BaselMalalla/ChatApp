@@ -1,5 +1,14 @@
-build
-nullframe_backend.egg-info
-.venv
+
+# Python
+__pycache__/
+*.pyc
+
+# Env
+.venv/
 .env
-__pycache__
+
+# Build
+build/
+dist/
+*.egg-info/
+nullframe_backend.egg-info/
