@@ -1,48 +1,31 @@
-from fastapi import APIRouter, HTTPException
-from schemas.user import UserIn, UserOutWithToken, UserLoginSchema
-from services.auth_service import register_user, authenticate_user
-from utils.jwt import create_jwt_token
-from models.user import User
+from fastapi import APIRouter, Request, Response
+from schemas.user import UserIn, UserOut, UserLoginSchema
+from services.auth_service import (
+    register_user,
+    authenticate_user,
+    refresh_access_token,
+    logout_user,
+)
 
-router = APIRouter()
-
-
-@router.post("/register", response_model=UserOutWithToken)
-async def register(user_in: UserIn):
-    # Check for existing email
-    if await User.find_one(User.email == user_in.email):
-        raise HTTPException(status_code=400, detail="Email already registered")
-
-    # Register user
-    user = await register_user(user_in)
-
-    # Generate token
-    token = create_jwt_token(user.email)
-
-    # Return output with token
-    return UserOutWithToken(
-        id=str(user.id),
-        username=user.username,
-        name=user.name,
-        email=user.email,
-        created_at=user.created_at,
-        token=token,
-    )
+router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
-@router.post("/login", response_model=UserOutWithToken)
-async def login(user_login: UserLoginSchema):
-    user = await authenticate_user(user_login.email, user_login.password)
-    if not user:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
+@router.post("/register", response_model=UserOut)
+async def register(user_in: UserIn, response: Response):
+    return await register_user(user_in, response)
 
-    token = create_jwt_token(user.email)
 
-    return UserOutWithToken(
-        id=str(user.id),
-        username=user.username,
-        name=user.name,
-        email=user.email,
-        created_at=user.created_at,
-        token=token,
-    )
+@router.post("/login", response_model=UserOut)
+async def login(credentials: UserLoginSchema, response: Response):
+    return await authenticate_user(credentials.email, credentials.password, response)
+
+
+@router.post("/refresh", response_model=UserOut)
+async def refresh(request: Request, response: Response):
+    return await refresh_access_token(request, response)
+
+
+@router.post("/logout")
+async def logout(response: Response):
+    """Endpoint triggers secure cookie clearing"""
+    return await logout_user(response)

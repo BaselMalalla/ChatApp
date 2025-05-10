@@ -53,7 +53,8 @@ class UserOut(BaseModel):
 
 
 class UserOutWithToken(UserOut):
-    token: str
+    access_token: str
+    refresh_token: str
 
     class Config:
         schema_extra = {
@@ -63,6 +64,7 @@ class UserOutWithToken(UserOut):
                 "name": "John Doe",
                 "email": "johndoe@example.com",
                 "created_at": "2021-01-01T00:00:00Z",
-                "token": "your-jwt-token-here",
+                "access_token": "your-jwt-token-here",
+                "refresh_token": "your-refresh-token-here",
             }
         }

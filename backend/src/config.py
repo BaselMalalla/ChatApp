@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = Field(
         default=60, json_schema_extra={"env": "ACCESS_TOKEN_EXPIRE_MINUTES"}
     )
+    refresh_token_expire_days: int = Field(
+        default=7, json_schema_extra={"env": "REFRESH_TOKEN_EXPIRE_DAYS"}
+    )
 
     # Database
     database_name: str = Field(
