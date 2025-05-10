@@ -40,7 +40,7 @@ class UserOut(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         schema_extra = {
             "example": {
                 "id": "60e7ab63b23c7e1c5cd6d2b5",
