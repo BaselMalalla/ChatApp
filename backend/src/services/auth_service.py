@@ -13,6 +13,8 @@ async def register_user(user_in: UserIn, response: Response) -> UserOut:
 
     user = User(
         email=user_in.email,
+        username=user_in.username,
+        name=user_in.name,
         hashed_password=hash_password(user_in.password),
         created_at=datetime.now(timezone.utc),
     )

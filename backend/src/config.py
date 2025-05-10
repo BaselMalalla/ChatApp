@@ -33,5 +33,10 @@ class Settings(BaseSettings):
         default="chatapp", json_schema_extra={"env": "DATABASE_NAME"}
     )
 
+    # Frontend URL
+    frontend_url: str = Field(
+        default="http://localhost:5173", json_schema_extra={"env": "FRONTEND_URL"}
+    )
+
 
 settings = Settings()

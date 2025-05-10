@@ -4,6 +4,8 @@ export interface CheckboxProps {
   label: string;
   className?: string;
   required?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
 }
 
 // InputFieldProps Interface
@@ -14,6 +16,8 @@ export interface InputFieldProps {
   placeholder?: string;
   className?: string;
   inputClassName?: string;
+  value: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 // SignUpLinkProps Interface
@@ -25,6 +29,7 @@ export interface SignUpLinkProps {
 export interface SubmitButtonProps {
   text: string;
   className?: string;
+  disabled?:boolean
 }
 
 export interface LogoProps {

@@ -8,6 +8,8 @@ const InputField: React.FC<InputFieldProps> = ({
     placeholder = "",
     className = "",
     inputClassName = "",
+    value = "",
+    onChange = () => {},
 }) => {
     return (
         <div className={className}>
@@ -22,7 +24,9 @@ const InputField: React.FC<InputFieldProps> = ({
                 type={type}
                 name={id}
                 id={id}
+                value={value}
                 placeholder={placeholder}
+                onChange={onChange}
                 required
                 className={`
                     bg-secondary-bg border border-secondary-border text-secondary-text

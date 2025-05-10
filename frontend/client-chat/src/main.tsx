@@ -5,7 +5,7 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="h-screen w-screen flex items-center justify-center bg-secondary-50 dark:bg-secondary-900">
+    <div className="h-screen flex items-center justify-center bg-secondary-50 dark:bg-secondary-900">
       <App />
     </div>
   </StrictMode>
