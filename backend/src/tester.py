@@ -1,0 +1,100 @@
+# import pytest
+# from fastapi.testclient import TestClient
+# from .main import app
+# from .db import db
+# from jose import jwt
+# from config import settings
+
+
+# client = TestClient(app)
+
+# # Test data emails to clean up after each test
+# TEST_EMAILS = {"testuser@example.com", "loginuser@example.com"}
+
+
+# @pytest.fixture(autouse=True)
+# async def cleanup_test_users():
+#     """
+#     Cleans up test users before and after each test run
+#     to ensure isolated and repeatable tests.
+#     """
+#     await db["users"].delete_many({"email": {"$in": list(TEST_EMAILS)}})
+#     yield
+#     await db["users"].delete_many({"email": {"$in": list(TEST_EMAILS)}})
+
+
+# def test_register_user_success():
+#     """
+#     Should register a new user successfully and return necessary fields.
+#     """
+#     new_user = {
+#         "username": "testuser",
+#         "name": "Test User",
+#         "email": "testuser@example.com",
+#         "password": "testpassword123",
+#     }
+#     response = client.post("/register", json=new_user)
+#     assert response.status_code == 200
+
+#     data = response.json()
+#     assert data["email"] == new_user["email"]
+#     assert isinstance(data.get("token"), str)
+#     # Optionally, check token format (if you use JWTs)
+#     assert len(data["token"].split(".")) == 3  # Basic JWT check
+#     for field in ["id", "username", "email", "token"]:
+#         assert field in data
+
+#     # Check if the 'id' field is a valid MongoDB ObjectId (24 character hex string)
+#     assert len(data["id"]) == 24
+#     assert all(c in "0123456789abcdef" for c in data["id"].lower())
+
+
+# def test_register_user_existing_email():
+#     """
+#     Should return 400 if the email is already registered.
+#     """
+#     user_data = {
+#         "username": "testuser",
+#         "name": "Test User",
+#         "email": "testuser@example.com",
+#         "password": "testpassword123",
+#     }
+#     client.post("/register", json=user_data)
+#     response = client.post("/register", json=user_data)
+
+#     assert response.status_code == 400
+#     assert response.json()["detail"] == "Email already registered"
+
+
+# def test_user_login_success():
+#     """
+#     Should log in successfully and return a valid token after registration.
+#     """
+#     user_data = {
+#         "username": "loginuser",
+#         "name": "Login User",
+#         "email": "loginuser@example.com",
+#         "password": "loginpassword123",
+#     }
+#     client.post("/register", json=user_data)
+
+#     login_data = {
+#         "email": user_data["email"],
+#         "password": user_data["password"],
+#     }
+#     response = client.post("/login", json=login_data)
+
+#     assert response.status_code == 200
+#     token = response.json().get("token")
+#     assert token and isinstance(token, str)
+#     # Optionally, check token format (if you use JWTs)
+#     assert len(token.split(".")) == 3  # Basic JWT check
+
+#     # Check if the token is valid and decode it
+#     payload = jwt.decode(
+#         token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM]
+#     )
+#     assert payload["sub"] == user_data["email"]
+#     assert isinstance(payload["sub"], str)  # Ensure that the email is a string
+
+# ! Discarded Does not work

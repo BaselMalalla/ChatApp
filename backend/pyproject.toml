@@ -3,8 +3,23 @@ name = "nullframe-backend"
 version = "0.1.0"
 description = "FastAPI backend for Nullframe"
 authors = [{ name = "Basel Malalla", email = "malalla.basel@gmail.com" }]
-dependencies = ["fastapi", "uvicorn[standard]", "motor", "python-dotenv"]
 requires-python = ">=3.12"
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "motor",
+    "python-dotenv",
+    "beanie",
+    "passlib[bcrypt]",
+    "bcrypt==4.0.1",
+    "python-jose[cryptography]",
+    "pydantic[email]",
+    "pydantic-settings",
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+]
 
 [project.optional-dependencies]
 dev = ["ruff"]
