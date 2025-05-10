@@ -37,7 +37,6 @@ async def login(user_login: UserLoginSchema):
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     token = create_jwt_token(user.email)
-    print(token)
 
     return UserOutWithToken(
         id=str(user.id),

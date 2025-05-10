@@ -4,9 +4,6 @@ from models.user import User
 from schemas.user import UserIn, UserOutWithToken
 from utils.hashing import hash_password, verify_password
 from utils.jwt import create_jwt_token
-import logging
-
-Logger = logging.getLogger(__name__)
 
 
 async def register_user(user_in: UserIn) -> UserOutWithToken:
@@ -26,8 +23,6 @@ async def register_user(user_in: UserIn) -> UserOutWithToken:
     await user.insert()
 
     token = create_jwt_token({"user_id": str(user.id)})
-    Logger.info(token)
-    # Replace dict() with model_dump()
     return UserOutWithToken(**user.to_pydantic().model_dump(), token=token)
 
 
