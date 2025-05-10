@@ -13,6 +13,7 @@ const SignInForm = () => {
     const { loginUser, loading, isAuthenticated } = useContext(AuthContext); // Accessing context for loginUser, loading, and authentication status
     const [email, setEmail] = useState(""); // State for email
     const [password, setPassword] = useState(""); // State for password
+    const [rememberMe, setRememberMe] = useState(false); // State for rememberMe
     const [error, setError] = useState<string | null>(null); // State for error messages
     const navigate = useNavigate(); // useNavigate hook for redirection
 
@@ -27,7 +28,7 @@ const SignInForm = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent the default form submission
         try {
-            await loginUser(email, password); // Attempt to log the user in
+            await loginUser(email, password, rememberMe); // Attempt to log the user in
         } catch (err) {
             console.log(err);
             setError("Login failed. Please check your credentials and try again."); // Set error message if login fails
@@ -61,7 +62,7 @@ const SignInForm = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <div className="flex items-center justify-between">
-                                <Checkbox id="remember" label="Remember me" className="custom-checkbox-class" />
+                                <Checkbox id="remember" label="Remember me" checked={rememberMe} className="" onChange={()=> setRememberMe(!rememberMe)} />
                                 <TextLink
                                     text=""
                                     linkText="Forgot password?"
